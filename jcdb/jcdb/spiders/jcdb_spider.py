@@ -21,7 +21,6 @@ class JcdbSpider(scrapy.Spider):
 
         for href in hrefs:
             yield response.follow(href, callback=self.parse_details)
-            return
 
         next_page = response.css('a.next::attr(href)').get()
         if next_page:

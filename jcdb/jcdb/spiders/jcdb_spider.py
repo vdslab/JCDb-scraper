@@ -47,7 +47,7 @@ class JcdbSpider(scrapy.Spider):
         description = details.css('p.clear::text').get().strip()
 
         actors = []
-        for li in details.css('ul#id li'):
+        for li in details.css('ul#actor li'):
             role = li.css('li::text').get().strip()
             name = li.css('a::text').get().strip()
             actors.append({"名前": name, "役割": role})

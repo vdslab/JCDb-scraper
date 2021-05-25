@@ -21,6 +21,7 @@ class JcdbSpider(scrapy.Spider):
 
         for href in hrefs:
             yield response.follow(href, callback=self.parse_details)
+            return
 
         next_page = response.css('a.next::attr(href)').get()
         if next_page:
@@ -48,7 +49,7 @@ class JcdbSpider(scrapy.Spider):
 
         actors = []
         for li in details.css('ul#actor li'):
-            role = li.css('li::text').get().strip()
+            role = li.css('li::text').getall()[1].strip()
             name = li.css('a::text').get().strip()
             actors.append({"名前": name, "役割": role})
 

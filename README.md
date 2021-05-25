@@ -13,5 +13,6 @@ $ pip install -r requirements.txt
 ## 実行方法
 
 ```sh
+$ cd jcdb
 $ scrapy crawl jcdb -o jcdb-movies.jsonlines
 ```

@@ -140,3 +140,5 @@ dmypy.json
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+
+*/jcdb-movies.jsonlines

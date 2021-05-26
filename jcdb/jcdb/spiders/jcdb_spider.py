@@ -34,7 +34,9 @@ class JcdbSpider(scrapy.Spider):
 
         list_l_dd = details.css('div.moviedetail-listL dd')
         list_r_dd = details.css('div.moviedetail-listR dd')
-        category = list_l_dd[0].css('a::text').get().strip()
+        category = list_l_dd[0].css('a::text').get()
+        if category:
+            category.strip()
         release_date = list_l_dd[1].css('dd::text').get().strip()
         production_companies = [item.strip()
                                 for item in list_l_dd[2].css('a::text').getall()]
@@ -49,7 +51,9 @@ class JcdbSpider(scrapy.Spider):
         actors = []
         for li in details.css('ul#actor li'):
             role = li.css('li::text').getall()[1].strip()
-            name = li.css('a::text').get().strip()
+            name = li.css('a::text').get()
+            if name:
+                name.strip()
             actors.append({"名前": name, "役割": role})
 
         staffs = []
